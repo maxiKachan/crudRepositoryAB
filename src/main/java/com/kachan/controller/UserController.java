@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -39,6 +36,12 @@ public class UserController {
         User user = new User(param.get("surname"), param.get("firstname"), param.get("patronymic"),
                 param.get("phoneNumber"));
         jpaUserRepository.save(user);
+        return "index";
+    }
+
+    @DeleteMapping()
+    public String deleteUser(@RequestParam long id){
+        jpaUserRepository.deleteById(id);
         return "index";
     }
 }

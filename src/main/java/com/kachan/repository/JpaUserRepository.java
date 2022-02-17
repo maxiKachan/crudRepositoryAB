@@ -23,4 +23,7 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
     List<User> findUserByPatronymic(String patronymic);
 
     User findUserByPhoneNumber(String phoneNumber);
+
+    @Override
+    void deleteById(Long id);
 }
