@@ -1,8 +1,7 @@
-package com.kachan.entities;
+package com.kachan.entity;
 
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "a_user")
@@ -15,26 +14,26 @@ public class User {
     private String surname;
     @Column(name = "first_name")
     private String firstname;
-    @Column(name = "last_name")
-    private String lastname;
+    @Column(name = "patronymic")
+    private String patronymic;
     @Column(name = "phone_number")
     private String phoneNumber;
 
     public User() {
     }
 
-    public User(String surname, String firstname, String lastname, String phoneNumber) {
+    public User(String surname, String firstname, String patronymic, String phoneNumber) {
         this.surname = surname;
         this.firstname = firstname;
-        this.lastname = lastname;
+        this.patronymic = patronymic;
         this.phoneNumber = phoneNumber;
     }
 
-    public User(long id, String surname, String firstname, String lastname, String phoneNumber) {
+    public User(long id, String surname, String firstname, String patronymic, String phoneNumber) {
         this.id = id;
         this.surname = surname;
         this.firstname = firstname;
-        this.lastname = lastname;
+        this.patronymic = patronymic;
         this.phoneNumber = phoneNumber;
     }
 
@@ -58,12 +57,12 @@ public class User {
         this.firstname = firstname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public String getPhoneNumber() {
@@ -75,16 +74,13 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && Objects.equals(surname, user.surname) && Objects.equals(firstname, user.firstname)
-                && Objects.equals(lastname, user.lastname) && Objects.equals(phoneNumber, user.phoneNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, surname, firstname, lastname, phoneNumber);
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

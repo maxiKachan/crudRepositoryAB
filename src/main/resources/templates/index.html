@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h3>The main page of the application</h3>
+<form method="get" action="user">
+<button type="submit">Get All Users</button>
+</form>
+<form method="get" action="addUser">
+    <button type="submit">Add User</button>
+</form>
+<table>
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+    </tr>
+    <tbody>
+    <tr th:each="user: ${users}">
+        <td><span th:text="${user.surname}"></span></td>
+        <td><span th:text="${user.firstname}"></span></td>
+        <td><span th:text="${user.patronymic}"></span></td>
+        <td><span th:text="${user.phoneNumber}"></span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
